@@ -17,16 +17,19 @@ function updateList() {
     const li = document.createElement('li');
     li.innerHTML = `
       <span>${name}</span>
-      <button onclick="removeName(${index})">❌</button>
+      <button class="remove-btn" data-index="${index}">❌</button>
     `;
     nameList.appendChild(li);
   });
-}
 
-function removeName(index) {
-  names.splice(index, 1);
-  saveNames();
-  updateList();
+  document.querySelectorAll('.remove-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const index = e.target.getAttribute('data-index');
+      names.splice(index, 1);
+      saveNames();
+      updateList();
+    });
+  });
 }
 
 nameForm.addEventListener('submit', (e) => {
@@ -41,11 +44,12 @@ nameForm.addEventListener('submit', (e) => {
 });
 
 resetButton.addEventListener('click', () => {
-  if (confirm('Are you sure you want to reset all names?')) {
+  if (confirm("Are you sure you want to delete all suggestions?")) {
     names = [];
     saveNames();
     updateList();
     winnerDiv.textContent = '';
+    winnerDiv.classList.remove('loading');
   }
 });
 
