@@ -5,6 +5,8 @@ body {
   display: flex;
   justify-content: center;
   padding: 40px;
+  min-height: 100vh;
+  margin: 0;
 }
 
 .container {
@@ -52,6 +54,7 @@ button.danger:hover {
 ul {
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
 li {
@@ -80,10 +83,11 @@ li button {
 }
 
 .loading {
+  font-style: italic;
   animation: blink 1s infinite;
 }
 
 @keyframes blink {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  50% { opacity: 0.3; }
 }
