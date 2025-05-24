@@ -32,6 +32,18 @@ function updateList() {
   });
 }
 
+function speak(text) {
+  if ('speechSynthesis' in window) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    // Optional: set voice, rate, pitch
+    utterance.rate = 1;
+    utterance.pitch = 1;
+    window.speechSynthesis.speak(utterance);
+  } else {
+    console.warn("Sorry, your browser does not support speech synthesis.");
+  }
+}
+
 nameForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const newName = nameInput.value.trim();
@@ -66,6 +78,9 @@ lotteryButton.addEventListener('click', () => {
     const winner = names[Math.floor(Math.random() * names.length)];
     winnerDiv.classList.remove('loading');
     winnerDiv.textContent = `🎉 The Winner is: ${winner}! 🎉`;
+
+    // Speak the winner name
+    speak(`The winner is ${winner}`);
   }, 2000);
 });
 
