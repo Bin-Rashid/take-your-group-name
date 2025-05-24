@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Take Your Group Name</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🎉 Take Your Group Name 🎉</h1>
+    <form id="nameForm">
+      <input type="text" id="nameInput" placeholder="Suggest a name..." required />
+      <button type="submit">Submit</button>
+    </form>
+    <div id="nameListContainer">
+      <h2>Suggestions:</h2>
+      <ul id="nameList"></ul>
+    </div>
+    <button id="lotteryButton">🎲 Pick a Random Name</button>
+    <div id="winner"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
