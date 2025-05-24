@@ -34,13 +34,14 @@ function updateList() {
 
 function speak(text) {
   if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel(); // stop any existing speech
     const utterance = new SpeechSynthesisUtterance(text);
-    // Optional: set voice, rate, pitch
+    utterance.lang = 'en-US';
     utterance.rate = 1;
     utterance.pitch = 1;
     window.speechSynthesis.speak(utterance);
   } else {
-    console.warn("Sorry, your browser does not support speech synthesis.");
+    console.warn("Speech synthesis not supported.");
   }
 }
 
@@ -79,7 +80,7 @@ lotteryButton.addEventListener('click', () => {
     winnerDiv.classList.remove('loading');
     winnerDiv.textContent = `🎉 The Winner is: ${winner}! 🎉`;
 
-    // Speak the winner name
+    // Speak winner name
     speak(`The winner is ${winner}`);
   }, 2000);
 });
